@@ -1,0 +1,3 @@
+include cwcwidth/_impl.pyx
+include LICENSE CHANGELOG.md
+recursive-include picnic tests *.py
