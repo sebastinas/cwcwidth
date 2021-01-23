@@ -8,11 +8,11 @@ class Tests(unittest.TestCase):
     ):
         if expected_length is None:
             expected_length = sum(individual_expected_lengths)
-        self.assertEquals(
+        self.assertEqual(
             individual_expected_lengths,
             tuple(map(wcwidth, phrase if n is None else phrase[:n])),
         )
-        self.assertEquals(expected_length, wcswidth(phrase, n))
+        self.assertEqual(expected_length, wcswidth(phrase, n))
 
     def test_hello_jp(self):
         """Width of Japanese phrase: コンニチハ, セカイ!"""
