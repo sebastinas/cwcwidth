@@ -45,4 +45,4 @@ cwcwidth.wcswidth("コンニチハ, セカイ!") # 19
 
 ## License
 
-The code is licensed under the MIT license.
+The code is licensed under the Expat license.
