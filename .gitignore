@@ -1,2 +1,5 @@
 build/
+dist/
 cwcwidth/_impl.c
+*.egg-info
+__pycache__
