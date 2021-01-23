@@ -22,7 +22,13 @@ setup(
     url="https://github.com/sebastinas/cwcwidth",
     license="Expat",
     ext_modules=cythonize(
-        [Extension("cwcwidth._impl", ["cwcwidth/_impl.pyx"],)], language_level=3,
+        [
+            Extension(
+                "cwcwidth._impl",
+                ["cwcwidth/_impl.pyx"],
+            )
+        ],
+        language_level=3,
     ),
     packages=["cwcwidth"],
     classifiers=[
