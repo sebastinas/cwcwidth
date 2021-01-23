@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
+import platform
 import os.path
-import sys
 from setuptools import setup, Extension
 from Cython.Build import cythonize
 
@@ -9,6 +9,18 @@ from Cython.Build import cythonize
 def read(name):
     with open(os.path.join(os.path.dirname(__file__), name)) as f:
         return f.read()
+
+
+extension_sources = ["cwcwidth/_impl.pyx"]
+if platform.system() == "Windows":
+    extension_sources.append("cwcwidth/wcwidth.c")
+    define_macros = [
+        ("USE_MK_WCWIDTH", None),
+    ]
+else:
+    define_macros = [
+        ("_XOPEN_SOURCE", "600"),
+    ]
 
 
 setup(
@@ -25,7 +37,8 @@ setup(
         [
             Extension(
                 "cwcwidth._impl",
-                ["cwcwidth/_impl.pyx"],
+                extension_sources,
+                define_macros=define_macros,
             )
         ],
         language_level=3,

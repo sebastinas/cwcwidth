@@ -1,3 +1,3 @@
-include cwcwidth/_impl.pyx
+include cwcwidth/_impl.pyx cwcwidth/wcwidth.c cwcwidth/wcwidth_compat.h
 include LICENSE CHANGELOG.md
-recursive-include picnic tests *.py
+recursive-include cwcwidth tests *.py
