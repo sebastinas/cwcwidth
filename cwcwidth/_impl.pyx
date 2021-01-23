@@ -31,7 +31,7 @@ cdef extern from "<wchar.h>" nogil:
     size_t wcslen(const wchar_t*)
 
 
-cdef wcswidth_loop(const wchar_t* s, size_t n):
+cdef int wcswidth_loop(const wchar_t* s, size_t n):
     cdef size_t idx
     cdef int v
     cdef ret = 0
