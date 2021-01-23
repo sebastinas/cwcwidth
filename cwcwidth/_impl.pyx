@@ -46,6 +46,10 @@ cdef int wcswidth_loop(const wchar_t* s, size_t n):
 def c_wcswidth(str pwcs not None, n=None):
     """Return the printable length of a unicode character on a terminal.
 
+    Note that this function slightly deviates from wcswidth(3) behavior when the string includes
+    null characters. As strings are not null terminated, they are treated as characters of width 0
+    and processing continues until the end of the string.
+
     See wcswidth(3) for more details.
     """
 

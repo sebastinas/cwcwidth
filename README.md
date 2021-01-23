@@ -5,7 +5,7 @@ and POSIX.1-2008 based on [Cython](https://cython.org/) . These functions comput
 length of a unicode character/string on a terminal. The module provides the same functions as
 [wcwidth](https://pypi.org/project/wcwidth/) and its behavior is compatible.
 
-On systems not conforming to POSIX.1-2001 or POSIX.1-2008, Markus Kuhn's
+On systems not conforming to POSIX.1-2001 and POSIX.1-2008, Markus Kuhn's
 [implementation](https://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c) is used to provide the
 functionality.
 
@@ -13,7 +13,7 @@ functionality.
 
 * `Cython >= 0.28` (only for building)
 
-## Quick installation guilde
+## Quick installation guide
 
 `cwcwidth` can be installed via `pip`:
 ```sh

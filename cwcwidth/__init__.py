@@ -18,9 +18,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from ._impl import c_wcwidth as wcwidth, c_wcswidth as wcswidth
+"""Bindings for wcwidth(3) and wcswidth(3)
+
+This module computes the number of cells a unicode string is expected to occupy
+on the screen. On systems conforming to POSIX.1-2001 to POSIX.1-2008, this
+module calls wcwidth(3) and wcswidth(3) provided by C library. On systems where
+these functions are not available, a compatible implementation is included in
+the module.
+
+This module provides the same interface as the wcwidth module.
+"""
+
+from . import _impl
 
 __version__ = "0.1"
 __author__ = "Sebastian Ramacher"
 __license__ = "Expat"
 __copyright__ = f"(C) 2021 {__author__}"
+
+wcwidth = _impl.c_wcwidth
+wcswidth = _impl.c_wcswidth
