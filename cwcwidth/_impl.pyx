@@ -25,7 +25,7 @@ cdef extern from "Python.h":
     wchar_t* PyUnicode_AsWideCharString(object, Py_ssize_t*) except NULL
     Py_ssize_t PyUnicode_AsWideChar(object, wchar_t*, Py_ssize_t)
 
-cdef extern from "wchar.h" nogil:
+cdef extern from "<wchar.h>" nogil:
     int wcswidth(const wchar_t*, size_t)
     int wcwidth(wchar_t)
     size_t wcslen(const wchar_t*)
