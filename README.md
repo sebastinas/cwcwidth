@@ -1,7 +1,7 @@
 # Python bindings for wc(s)width
 
 `cwcwidth` provides Python bindings for `wcwidth` and `wcswidth` functions defined in POSIX.1-2001
-and POSIX.1-2008 based on [Cython](https://cython.org/) . These functions compute the printable
+and POSIX.1-2008 based on [Cython](https://cython.org/). These functions compute the printable
 length of a unicode character/string on a terminal. The module provides the same functions as
 [wcwidth](https://pypi.org/project/wcwidth/) and its behavior is compatible.
 
