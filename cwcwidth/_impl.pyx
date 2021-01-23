@@ -53,15 +53,15 @@ def c_wcswidth(str pwcs not None, n=None):
     See wcswidth(3) for more details.
     """
 
-    cdef Py_ssize_t wslen = 0
-    cdef wchar_t* s = PyUnicode_AsWideCharString(pwcs, &wslen)
-    cdef size_t cn = wslen
+    cdef Py_ssize_t actual_length
+    cdef wchar_t* s = PyUnicode_AsWideCharString(pwcs, &actual_length)
+    cdef size_t cn = actual_length
     cdef int ret = 0
 
     if n is not None and n < cn:
         cn = <size_t>n
 
-    if <size_t>wslen != wcslen(s):
+    if <size_t>actual_length != wcslen(s):
         # In this case pwcs contains a null character. libc's wcwidth (and other string processing
         # functions) will stop when encountering a null character, but in Python the null character
         # will just be skipped. So in this case we will emulate wcwidth's behavior and sum up all
@@ -82,6 +82,6 @@ def c_wcwidth(str wc not None):
     if len(wc) != 1:
         raise ValueError("Expected one unicode character")
 
-    cdef wchar_t c = 0
+    cdef wchar_t c
     PyUnicode_AsWideChar(wc, &c, 1)
     return wcwidth(c)
