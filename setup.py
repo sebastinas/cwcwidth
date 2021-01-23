@@ -7,7 +7,7 @@ from Cython.Build import cythonize
 
 
 def read(name):
-    with open(os.path.join(os.path.dirname(__file__), name)) as f:
+    with open(os.path.join(os.path.dirname(__file__), name), encoding="utf-8") as f:
         return f.read()
 
 
