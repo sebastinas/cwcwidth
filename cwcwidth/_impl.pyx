@@ -57,7 +57,7 @@ def c_wcswidth(str pwcs not None, n=None):
     if n is not None and n < cn:
         cn = <size_t>n
 
-    if wslen != wcslen(s):
+    if <size_t>wslen != wcslen(s):
         # In this case pwcs contains a null character. libc's wcwidth (and other string processing
         # functions) will stop when encountering a null character, but in Python the null character
         # will just be skipped. So in this case we will emulate wcwidth's behavior and sum up all
