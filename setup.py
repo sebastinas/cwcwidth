@@ -3,7 +3,13 @@
 import platform
 import os.path
 from setuptools import setup, Extension
-from Cython.Build import cythonize
+
+try:
+    from Cython.Build import cythonize
+
+    have_cython = True
+except ImportError:
+    have_cython = False
 
 
 def read(name):
@@ -11,7 +17,7 @@ def read(name):
         return f.read()
 
 
-extension_sources = ["cwcwidth/_impl.pyx"]
+extension_sources = ["cwcwidth/_impl.pyx" if have_cython else "cwcwidth/_impl.c"]
 if platform.system() in ("Windows", "Darwin"):
     extension_sources.append("cwcwidth/wcwidth.c")
     define_macros = [
@@ -21,6 +27,20 @@ else:
     define_macros = [
         ("_XOPEN_SOURCE", "600"),
     ]
+
+ext_modules = [
+    Extension(
+        "cwcwidth._impl",
+        extension_sources,
+        define_macros=define_macros,
+    )
+]
+
+if have_cython:
+    ext_modules = cythonize(ext_modules, language_level=3)
+    setup_requires = ["Cython >= 0.28"]
+else:
+    setup_requires = []
 
 
 setup(
@@ -33,16 +53,7 @@ setup(
     author_email="sebastian@ramacher.at",
     url="https://github.com/sebastinas/cwcwidth",
     license="Expat",
-    ext_modules=cythonize(
-        [
-            Extension(
-                "cwcwidth._impl",
-                extension_sources,
-                define_macros=define_macros,
-            )
-        ],
-        language_level=3,
-    ),
+    ext_modules=ext_modules,
     packages=["cwcwidth"],
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -52,5 +63,5 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     python_requires=">= 3.6",
-    setup_requires=["cython >= 0.28"],
+    setup_requires=setup_requires,
 )

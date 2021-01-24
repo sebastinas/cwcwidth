@@ -11,7 +11,8 @@ functionality.
 
 ## Dependencies
 
-* `Cython >= 0.28` (only for building)
+* `Cython >= 0.28` (optional, only for building). If Cython is not available, the C files are not
+  regenerated from their source.
 
 ## Quick installation guide
 
