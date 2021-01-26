@@ -34,7 +34,7 @@ cdef extern from "wcwidth_compat.h" nogil:
 cdef int wcswidth_loop(const wchar_t* s, size_t n):
     cdef size_t idx
     cdef int v
-    cdef ret = 0
+    cdef int ret = 0
     for idx in range(n):
         v = wcwidth(s[idx])
         if v == -1:
