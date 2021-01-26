@@ -55,6 +55,10 @@ setup(
     license="Expat",
     ext_modules=ext_modules,
     packages=["cwcwidth"],
+    package_data={
+        "cwcwidth": ["*.pyi", "py.typed"],
+    },
+    include_package_data=True,
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
@@ -64,4 +68,5 @@ setup(
     ],
     python_requires=">= 3.6",
     setup_requires=setup_requires,
+    zip_safe=False,
 )
