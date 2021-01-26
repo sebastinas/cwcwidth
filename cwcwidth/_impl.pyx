@@ -28,6 +28,8 @@ cdef extern from "Python.h":
 cdef extern from "wcwidth_compat.h" nogil:
     int wcswidth(const wchar_t*, size_t)
     int wcwidth(wchar_t)
+
+cdef extern from "<wchar.h>" nogil:
     size_t wcslen(const wchar_t*)
 
 
