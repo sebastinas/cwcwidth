@@ -45,7 +45,7 @@ else:
 
 setup(
     name="cwcwidth",
-    version="0.1.1",
+    version="0.1.2",
     description="Python bindings for wc(s)width",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
