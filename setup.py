@@ -58,7 +58,6 @@ setup(
     package_data={
         "cwcwidth": ["*.pyi", "py.typed"],
     },
-    include_package_data=True,
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
