@@ -58,21 +58,20 @@ def c_wcswidth(str pwcs not None, n=None):
     cdef Py_ssize_t actual_length
     cdef wchar_t* s = PyUnicode_AsWideCharString(pwcs, &actual_length)
     cdef size_t cn = actual_length
-    cdef int ret = 0
 
     if n is not None and n < cn:
         cn = <size_t>n
 
-    if <size_t>actual_length != wcslen(s):
-        # In this case pwcs contains a null character. libc's wcwidth (and other string processing
-        # functions) will stop when encountering a null character, but in Python the null character
-        # will just be skipped. So in this case we will emulate wcwidth's behavior and sum up all
-        # the width of all characters individually
-        ret = wcswidth_loop(s, cn)
-    else:
-        ret = wcswidth(s, cn)
-    PyMem_Free(s)
-    return ret
+    try:
+        if <size_t>actual_length != wcslen(s):
+            # In this case pwcs contains a null character. libc's wcwidth (and other string
+            # processing functions) will stop when encountering a null character, but in Python the
+            # null character will just be skipped. So in this case we will emulate wcwidth's
+            # behavior and sum up all the width of all characters individually.
+            return wcswidth_loop(s, cn)
+        return wcswidth(s, cn)
+    finally:
+        PyMem_Free(s)
 
 
 def c_wcwidth(str wc not None):
