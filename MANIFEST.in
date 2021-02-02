@@ -1,6 +1,5 @@
 include cwcwidth/_impl.pyx cwcwidth/wcwidth.c cwcwidth/wcwidth_compat.h
-include cwcwidth/*.pyi cwcwidth/py.typed
-include LICENSE CHANGELOG.md
-recursive-include tests *.py
+include cwcwidth/_impl.pyi cwcwidth/py.typed
+include CHANGELOG.md
 exclude .gitignore
 prune .github
