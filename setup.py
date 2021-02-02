@@ -4,20 +4,13 @@ import platform
 import os.path
 from setuptools import setup, Extension
 
-try:
-    from Cython.Build import cythonize
-
-    have_cython = True
-except ImportError:
-    have_cython = False
-
 
 def read(name):
     with open(os.path.join(os.path.dirname(__file__), name), encoding="utf-8") as f:
         return f.read()
 
 
-extension_sources = ["cwcwidth/_impl.pyx" if have_cython else "cwcwidth/_impl.c"]
+extension_sources = ["cwcwidth/_impl.pyx"]
 if platform.system() in ("Windows", "Darwin"):
     extension_sources.append("cwcwidth/wcwidth.c")
     define_macros = [
@@ -35,13 +28,6 @@ ext_modules = [
         define_macros=define_macros,
     )
 ]
-
-if have_cython:
-    ext_modules = cythonize(ext_modules, language_level=3)
-    setup_requires = ["Cython >= 0.28"]
-else:
-    setup_requires = []
-
 
 setup(
     name="cwcwidth",
