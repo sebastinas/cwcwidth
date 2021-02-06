@@ -48,7 +48,7 @@ cwcwidth.wcswidth("コンニチハ, セカイ!") # 19
 
 The code is licensed under the MIT license.
 
-## Security contact informaton
+## Security contact information
 
 To report a security vulnerability, please use the [Tidelift security
 contact](https://tidelift.com/security). Tidelift will coorindate the fix and disclosure.
