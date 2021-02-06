@@ -61,9 +61,12 @@ def c_wcswidth(str pwcs not None, n=None):
     cdef wchar_t* s = PyUnicode_AsWideCharString(pwcs, &actual_length)
     cdef size_t length = actual_length
     cdef size_t null_byte_pos = wcslen(s)
+    cdef size_t converted_n
 
-    if n is not None and <size_t>n < length:
-        length = <size_t>n
+    if n is not None:
+        converted_n = <size_t>n
+        if converted_n < length:
+            length = converted_n
 
     try:
         if <size_t>actual_length != null_byte_pos:
