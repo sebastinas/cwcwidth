@@ -28,10 +28,15 @@ python3 setup.py install
 ## Usage
 
 ```python3
-import cwcwidth
-cwcwidth.wcwidth("a") # 1
-cwcwidth.wcswidth("コ") # 2
-cwcwidth.wcswidth("コンニチハ, セカイ!") # 19
+>>> import cwcwidth
+>>> cwcwidth.wcwidth("a")
+1
+>>> cwcwidth.wcswidth("コ")
+2
+>>> cwcwidth.wcswidth("コンニチハ, セカイ!")
+19
+>>> cwcwidth.wcswidth("コンニチハ, セカイ!", 5)
+10
 ```
 
 ## Comparison with `wcwidth`
