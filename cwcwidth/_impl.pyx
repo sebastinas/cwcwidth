@@ -63,12 +63,12 @@ def wcswidth(str pwcs not None, n=None):
     cdef size_t null_byte_pos = wcslen(s)
     cdef size_t converted_n
 
-    if n is not None:
-        converted_n = <size_t>n
-        if converted_n < length:
-            length = converted_n
-
     try:
+        if n is not None:
+            converted_n = <size_t>n
+            if converted_n < length:
+                length = converted_n
+
         if <size_t>actual_length != null_byte_pos:
             # In this case pwcs contains a null character. libc's wcwidth (and other string
             # processing functions) will stop when encountering a null character, but in Python the
