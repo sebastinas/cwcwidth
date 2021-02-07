@@ -1,4 +1,4 @@
-include cwcwidth/_impl.pyx cwcwidth/wcwidth.c cwcwidth/wcwidth_compat.h
+include cwcwidth/_impl.pyx cwcwidth/_impl.c cwcwidth/wcwidth.c cwcwidth/wcwidth_compat.h
 include cwcwidth/_impl.pyi cwcwidth/py.typed
 recursive-include tests *.py
 include CHANGELOG.md
