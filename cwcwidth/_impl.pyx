@@ -36,11 +36,10 @@ cdef extern from "<wchar.h>" nogil:
 
 
 cdef int wcswidth_loop(const wchar_t* s, size_t n) nogil:
-    cdef size_t idx
     cdef int v
     cdef int ret = 0
-    for idx in range(n):
-        v = c_wcwidth(s[idx])
+    for c in s[:n]:
+        v = c_wcwidth(c)
         if v == -1:
             return -1
         ret += v
