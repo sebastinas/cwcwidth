@@ -1,3 +1,9 @@
+0.1.4
+-----
+
+* Include tests again.
+* Include C file again.
+
 0.1.3
 -----
 
