@@ -17,6 +17,10 @@ class Tests(unittest.TestCase):
         )
         self.assertEqual(expected_length, wcswidth(phrase, n))
 
+    def test_hello_world(self):
+        """Width of English phrase: Hello World!"""
+        self._exec_test("Hello World!", (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1))
+
     @unittest.skipUnless(supports_utf8, "locale does not support UTF-8")
     def test_hello_jp(self):
         """Width of Japanese phrase: コンニチハ, セカイ!"""
