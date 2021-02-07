@@ -28,8 +28,8 @@ cdef extern from "Python.h":
     Py_ssize_t PyUnicode_AsWideChar(object, wchar_t*, Py_ssize_t)
 
 cdef extern from "wcwidth_compat.h" nogil:
-    int wcswidth(const wchar_t*, size_t)
-    int wcwidth(wchar_t)
+    int c_wcswidth "wcswidth" (const wchar_t*, size_t)
+    int c_wcwidth "wcwidth" (wchar_t)
 
 cdef extern from "<wchar.h>" nogil:
     size_t wcslen(const wchar_t*)
@@ -40,14 +40,14 @@ cdef int wcswidth_loop(const wchar_t* s, size_t n) nogil:
     cdef int v
     cdef int ret = 0
     for idx in range(n):
-        v = wcwidth(s[idx])
+        v = c_wcwidth(s[idx])
         if v == -1:
             return -1
         ret += v
     return ret
 
 
-def c_wcswidth(str pwcs not None, n=None):
+def wcswidth(str pwcs not None, n=None):
     """Return the printable length of a unicode character on a terminal.
 
     Note that this function slightly deviates from wcswidth(3) behavior when the string includes
@@ -75,12 +75,12 @@ def c_wcswidth(str pwcs not None, n=None):
             # null character will just be skipped. So in this case we will emulate wcwidth's
             # behavior and sum up the widths of all characters individually.
             return wcswidth_loop(s, length)
-        return wcswidth(s, length)
+        return c_wcswidth(s, length)
     finally:
         PyMem_Free(s)
 
 
-def c_wcwidth(str wc not None):
+def wcwidth(str wc not None):
     """Return the printable length of a unicode character on a terminal.
 
     See wcwidth(3) for more details.
@@ -91,4 +91,4 @@ def c_wcwidth(str wc not None):
 
     cdef wchar_t c
     PyUnicode_AsWideChar(wc, &c, 1)
-    return wcwidth(c)
+    return c_wcwidth(c)
