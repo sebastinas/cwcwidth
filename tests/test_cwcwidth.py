@@ -17,6 +17,17 @@ class Tests(unittest.TestCase):
         )
         self.assertEqual(expected_length, wcswidth(phrase, n))
 
+    def test_exceptions(self):
+        """wcwidth raises ValueError for strings of length != 1."""
+        with self.assertRaises(ValueError):
+            wcwidth("")
+        with self.assertRaises(ValueError):
+            wcwidth("abc")
+
+    def test_empty_string(self):
+        """Width of an emptry string is 0."""
+        self._exec_test("", tuple())
+
     def test_hello_world(self):
         """Width of English phrase: Hello World!"""
         self._exec_test("Hello World!", (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1))
