@@ -29,3 +29,6 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+      env:
+        LC_ALL: C.UTF-8
+        LANG: C.UTF-8

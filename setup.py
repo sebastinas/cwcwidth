@@ -5,7 +5,7 @@ from setuptools import setup, Extension
 
 
 extension_sources = ["cwcwidth/_impl.pyx"]
-if platform.system()== "Windows":
+if platform.system() == "Windows":
     extension_sources.append("cwcwidth/wcwidth.c")
     define_macros = [
         ("USE_MK_WCWIDTH", None),
