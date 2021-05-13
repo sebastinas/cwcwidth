@@ -90,3 +90,7 @@ class Tests(unittest.TestCase):
     def test_combining_spacing(self):
         """Balinese kapal (ship) is ᬓᬨᬮ᭄ of length 4."""
         self._exec_test("\u1B13\u1B28\u1B2E\u1B44", (1, 1, 1, 1))
+
+    def test_carriage_return(self):
+        """Control character reports width -1."""
+        self._exec_test("\r", (-1,))
