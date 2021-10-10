@@ -31,7 +31,7 @@ This module provides the same interface as the wcwidth module.
 
 from ._impl import wcwidth, wcswidth
 
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 __author__ = "Sebastian Ramacher"
 __license__ = "Expat"
 __copyright__ = f"(C) 2021 {__author__}"

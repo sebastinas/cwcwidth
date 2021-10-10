@@ -1,3 +1,8 @@
+0.1.5
+-----
+
+* Fix type annotations
+
 0.1.4
 -----
 
