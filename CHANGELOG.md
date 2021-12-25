@@ -1,3 +1,9 @@
+0.1.6
+-----
+
+* Add support for Python 3.10
+* Drop support for Python 3.6
+
 0.1.5
 -----
 
