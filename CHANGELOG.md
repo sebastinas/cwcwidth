@@ -1,3 +1,8 @@
+0.1.7
+-----
+
+* Ensure that cython generated C source file is always included in sdist.
+
 0.1.6
 -----
 

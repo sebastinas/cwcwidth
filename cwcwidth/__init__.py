@@ -1,4 +1,4 @@
-# Copyright 2021 Sebastian Ramacher <sebastian@ramacher.at>
+# Copyright 2021-2022 Sebastian Ramacher <sebastian@ramacher.at>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -31,8 +31,8 @@ This module provides the same interface as the wcwidth module.
 
 from ._impl import wcwidth, wcswidth
 
-__version__ = "0.1.6"
+__version__ = "0.1.7"
 __author__ = "Sebastian Ramacher"
 __license__ = "Expat"
-__copyright__ = f"(C) 2021 {__author__}"
+__copyright__ = f"(C) 2021-2022 {__author__}"
 __all__ = ("wcwidth", "wcswidth")
