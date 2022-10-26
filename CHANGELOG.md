@@ -1,3 +1,8 @@
+0.1.8
+-----
+
+* Set build-backend in pyproject.toml.
+
 0.1.7
 -----
 
@@ -6,13 +11,13 @@
 0.1.6
 -----
 
-* Add support for Python 3.10
-* Drop support for Python 3.6
+* Add support for Python 3.10.
+* Drop support for Python 3.6.
 
 0.1.5
 -----
 
-* Fix type annotations
+* Fix type annotations.
 
 0.1.4
 -----
