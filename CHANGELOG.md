@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.9
+
+* Drop support for Python 3.7.
+* Add support for Python 3.12.
+* Avoid redefinition of `_XOPEN_SOURCE`.
+
 ## 0.1.8
 
 * Set build-backend in pyproject.toml.
