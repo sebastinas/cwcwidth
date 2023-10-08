@@ -23,6 +23,12 @@
 #ifndef WCWIDTH_COMPAT_H
 #define WCWIDTH_COMPAT_H
 
+#include <pyconfig.h>
+
+#if !defined(_WIN32) && !defined(_XOPEN_SOURCE)
+#define _XOPEN_SOURCE
+#endif
+
 #include <wchar.h>
 
 #if defined(USE_MK_WCWIDTH)
