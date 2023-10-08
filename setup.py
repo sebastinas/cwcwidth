@@ -8,7 +8,7 @@ extension_sources = ["cwcwidth/_impl.pyx"]
 define_macros = []
 if platform.system() == "Windows":
     extension_sources.append("cwcwidth/wcwidth.c")
-    define_macrosa.append(
+    define_macros.append(
         ("USE_MK_WCWIDTH", None),
     )
 
