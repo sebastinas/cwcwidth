@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.10
+
+* Drop support for Python 3.8.
+* Add support for Python 3.13.
+* Update Unicode definition to 15.1.
+
 ## 0.1.9
 
 * Drop support for Python 3.7.
