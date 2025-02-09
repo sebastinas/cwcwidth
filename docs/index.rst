@@ -1,5 +1,5 @@
 
-cwcwidth -- bindings for wc(s)wdith
+cwcwidth -- bindings for wc(s)width
 ===================================
 
 .. toctree::
