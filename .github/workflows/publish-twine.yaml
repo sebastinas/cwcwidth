@@ -30,6 +30,7 @@ jobs:
           CIBW_BUILD: "cp39-* cp310-* cp311-* cp312-* cp313-*"
       - uses: actions/upload-artifact@v4
         with:
+          name: wheels-${{ matrix.os }}
           path: dist/*.whl
 
   build_sdist:
@@ -51,6 +52,7 @@ jobs:
         python setup.py sdist
     - uses: actions/upload-artifact@v4
       with:
+        name: wheels-source
         path: dist/*
 
   publish:
@@ -60,8 +62,9 @@ jobs:
     steps:
     - uses: actions/download-artifact@v4
       with:
-        name: artifact
         path: dist
+        merge-multiple: true
+        pattern: wheels*
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@master
       with:
