@@ -89,7 +89,7 @@ class Tests(unittest.TestCase):
     @unittest.skipUnless(supports_utf8, "locale does not support UTF-8")
     def test_combining_spacing(self):
         """Balinese kapal (ship) is ᬓᬨᬮ᭄ of length 4."""
-        self._exec_test("\u1B13\u1B28\u1B2E\u1B44", (1, 1, 1, 1))
+        self._exec_test("\u1b13\u1b28\u1b2e\u1b44", (1, 1, 1, 1))
 
     def test_carriage_return(self):
         """Control character reports width -1."""
