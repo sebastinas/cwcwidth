@@ -19,10 +19,12 @@
 # SOFTWARE.
 
 import locale
+import sys
 import unittest
 from cwcwidth import wcwidth, wcswidth
 
 supports_utf8 = "UTF-8" in locale.getlocale()
+is_mac = sys.platform == "darwin"
 
 
 class Tests(unittest.TestCase):
@@ -87,6 +89,7 @@ class Tests(unittest.TestCase):
         self._exec_test("\u0410\u0488", (1, 0))
 
     @unittest.skipUnless(supports_utf8, "locale does not support UTF-8")
+    @unittest.skipIf(is_mac, "native wcwidth on macos reports incorrect size")
     def test_combining_spacing(self):
         """Balinese kapal (ship) is ᬓᬨᬮ᭄ of length 4."""
         self._exec_test("\u1b13\u1b28\u1b2e\u1b44", (1, 1, 1, 1))
