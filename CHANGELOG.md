@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.11
+
+* Drop support for Python 3.9.
+* Add support for Python 3.14.
+
 ## 0.1.10
 
 * Drop support for Python 3.8.
