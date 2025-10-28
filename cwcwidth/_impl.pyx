@@ -22,10 +22,7 @@
 
 from libc.stddef cimport wchar_t, size_t
 from cpython.mem cimport PyMem_Free
-
-cdef extern from "Python.h":
-    wchar_t* PyUnicode_AsWideCharString(object, Py_ssize_t*) except NULL
-    Py_ssize_t PyUnicode_AsWideChar(object, wchar_t*, Py_ssize_t)
+from cpython.unicode cimport PyUnicode_AsWideCharString, PyUnicode_AsWideChar
 
 cdef extern from "wcwidth_compat.h" nogil:
     int c_wcswidth "wcswidth" (const wchar_t*, size_t)
