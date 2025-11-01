@@ -12,8 +12,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, ubuntu-24.04-arm, windows-latest, macos-latest]
-    env:
-      USE_LIMITED_API: "1"
 
     steps:
       - uses: actions/checkout@v5
@@ -32,6 +30,35 @@ jobs:
       - uses: actions/upload-artifact@v5
         with:
           name: wheels-${{ matrix.os }}
+          path: dist/*.whl
+
+  build_wheels_limited_api:
+    name: Build wheels on ${{ matrix.os }} with limited API
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm, windows-latest, macos-latest]
+    env:
+      USE_LIMITED_API: "1"
+      CIBW_SKIP: "cp3??t-*"
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        name: Install Python
+        with:
+          python-version: '3.x'
+
+      - name: Install cibuildwheel
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "cython >= 3.1" cibuildwheel
+      - name: Build wheels
+        run: |
+          python -m cibuildwheel --output-dir dist
+      - uses: actions/upload-artifact@v5
+        with:
+          name: wheels-limited-api${{ matrix.os }}
           path: dist/*.whl
 
   build_sdist:
@@ -58,7 +85,7 @@ jobs:
 
   publish:
     name: Publish to PyPI
-    needs: [build_wheels, build_sdist]
+    needs: [build_wheels, build_wheels_limited_api, build_sdist]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@v6

@@ -22,3 +22,6 @@ exclude = '''
   | docs
 )/
 '''
+
+[tool.cibuildwheel]
+environment-pass = ["USE_LIMITED_API"]
