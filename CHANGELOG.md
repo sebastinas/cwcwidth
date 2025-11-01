@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.12
+
+* Drop support for Python 3.10.
+* Add support for building extensions with limited API.
+* Build wheels for PyPI with limited API.
+
 ## 0.1.11
 
 * Drop support for Python 3.9.
