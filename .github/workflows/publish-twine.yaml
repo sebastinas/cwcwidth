@@ -12,6 +12,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, ubuntu-24.04-arm, windows-latest, macos-latest]
+    env:
+      USE_LIMITED_API: "1"
 
     steps:
       - uses: actions/checkout@v5
@@ -27,8 +29,6 @@ jobs:
       - name: Build wheels
         run: |
           python -m cibuildwheel --output-dir dist
-        env:
-          CIBW_BUILD: "cp311-* cp312-* cp313-* cp314-*"
       - uses: actions/upload-artifact@v5
         with:
           name: wheels-${{ matrix.os }}
