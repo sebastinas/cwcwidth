@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 
+import os
 import platform
 from setuptools import setup, Extension
+
+
+use_limited_api = "USE_LIMITED_API" in os.environ
 
 
 extension_sources = ["cwcwidth/_impl.pyx"]
@@ -12,11 +16,17 @@ if platform.system() == "Windows":
         ("USE_MK_WCWIDTH", None),
     )
 
+options = {}
+if use_limited_api:
+    define_macros.append(("Py_LIMITED_API", 0x030B0000))  # 3.11
+    options["bdist_wheel"] = {"py_limited_api": "cp311"}
+
 ext_modules = [
     Extension(
         "cwcwidth._impl",
         extension_sources,
         define_macros=define_macros,
+        py_limited_api=use_limited_api,
     )
 ]
 
@@ -26,4 +36,5 @@ setup(
     package_data={
         "cwcwidth": ["_impl.pyi", "py.typed"],
     },
+    options=options,
 )

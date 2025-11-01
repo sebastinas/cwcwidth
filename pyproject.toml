@@ -1,7 +1,7 @@
 [build-system]
 requires = [
   "setuptools >= 43",
-  "Cython >= 3",
+  "Cython >= 3.1",
 ]
 build-backend = "setuptools.build_meta"
 

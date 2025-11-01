@@ -11,7 +11,7 @@ functionality.
 
 ## Dependencies
 
-* `Cython >= 3` (optional, only for building). If Cython is not available, the C files are not
+* `Cython >= 3.1` (optional, only for building). If Cython is not available, the C files are not
   regenerated from their source.
 
 ## Quick installation guide
@@ -24,6 +24,9 @@ or by running:
 ```sh
 python3 setup.py install
 ```
+
+In case the extension should be built with the limited Python API, set the environment variable
+`USE_LIMITED_API` to any value.
 
 ## Usage
 
