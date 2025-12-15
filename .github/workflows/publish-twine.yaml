@@ -33,7 +33,7 @@ jobs:
         env:
           USE_LIMITED_API: "1"
           CIBW_SKIP: "cp3??t-*"
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: wheels-${{ matrix.os }}
           path: dist/*.whl
@@ -55,7 +55,7 @@ jobs:
       run: |
         python setup.py build
         python setup.py sdist
-    - uses: actions/upload-artifact@v5
+    - uses: actions/upload-artifact@v6
       with:
         name: wheels-source
         path: dist/*
