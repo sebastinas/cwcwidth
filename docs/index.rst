@@ -21,7 +21,7 @@ The ``cwcwidth`` module provides the following two functions:
 
   Return the printable length of a unicode character.
 
-.. py:function:: cwcwidth.wcswidth(pwcs: str, n: Optional[int]=None) -> int
+.. py:function:: cwcwidth.wcswidth(pwcs: str, n: int | None=None) -> int
 
   Return the printable length of a unicode string. If the optional argument ``n`` is provided, only
   the first ``n`` characters of the string are considered.
