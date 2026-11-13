@@ -4,7 +4,6 @@ import os
 import platform
 from setuptools import setup, Extension
 
-
 use_limited_api = "USE_LIMITED_API" in os.environ
 
 
