@@ -14,8 +14,8 @@ jobs:
       - name: Run "ruff format"
         uses: astral-sh/ruff-action@v4.1.0
         with:
-          args: "format --check -diff"
-      - name: Run "ruff heck"
+          args: "format --check --diff"
+      - name: Run "ruff check"
         uses: astral-sh/ruff-action@v4.1.0
 
   codespell:
