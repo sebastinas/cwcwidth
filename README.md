@@ -2,8 +2,8 @@
 
 `cwcwidth` provides Python bindings for `wcwidth` and `wcswidth` functions defined in POSIX.1-2001
 and POSIX.1-2008 based on [Cython](https://cython.org/). These functions compute the printable
-length of a unicode character/string on a terminal. The module provides the same functions as
-[wcwidth](https://pypi.org/project/wcwidth/) and its behavior is compatible.
+length of a unicode character/string on a terminal. The module provides the same `wcwidth()` and
+`wcswidth()` functions as [wcwidth](https://pypi.org/project/wcwidth/) and its behavior is comparable.
 
 On systems not conforming to POSIX.1-2001 and POSIX.1-2008, Markus Kuhn's
 [implementation](https://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c) is used to provide the
@@ -44,13 +44,22 @@ In case the extension should be built with the limited Python API, set the envir
 
 ## Comparison with `wcwidth`
 
+`cwcwidth` is about 2x faster than [wcwidth](https://wcwidth.readthedocs.io/en/latest/intro.html)
+for CJK,
+
 ```python3
 >>> import wcwidth, cwcwidth, timeit
 >>> timeit.timeit(lambda: wcwidth.wcswidth("コンニチハ, セカイ!"))
-19.14463168097427
+0.14529069198761135
 >>> timeit.timeit(lambda: cwcwidth.wcswidth("コンニチハ, セカイ!"))
-0.16294104099506512
+0.0692138300219085
 ```
+
+`wcwidth` ships a compiled extension for the stable ABI (`cp310-abi3`) with
+[libwcwidth](https://wcwidth.readthedocs.io/en/latest/libwcwidth.html), and provides *grapheme
+support*, required for complex languages and emojis, while `cwcwidth` is without grapheme support,
+calculating the sum of single-codepoint inspections as zero, narrow, or wide, and so `uwcwidth` is
+unable to measure emojis, flags, or complex languages.
 
 ## License
 
