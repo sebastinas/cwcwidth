@@ -28,23 +28,8 @@ Homepage = "https://github.com/sebastinas/cwcwidth"
 zip-safe = false
 include-package-data = false
 
-[tool.black]
-target_version = ["py311"]
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | \.hg
-  | \.eggs
-  | \.mypy_cache
-  | \.tox
-  | venv
-  | _build
-  | build
-  | dist
-  | docs
-)/
-'''
-
 [tool.cibuildwheel]
 environment-pass = ["USE_LIMITED_API"]
+
+[tool.ruff]
+exclude = ["docs"]

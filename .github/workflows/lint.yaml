@@ -5,23 +5,23 @@ on:
   pull_request:
 
 jobs:
-  black:
+  ruff:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v7
-    - name: Set up Python
-      uses: actions/setup-python@v7
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install black
-    - name: Check with black
-      run: black --check .
+      - uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+      - name: Run "ruff format"
+        uses: astral-sh/ruff-action@v4.1.0
+        with:
+          args: "format --check -diff"
+      - name: Run "ruff heck"
+        uses: astral-sh/ruff-action@v4.1.0
 
   codespell:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v7
-    - uses: codespell-project/actions-codespell@master
-      with:
-        skip: '_impl.c'
+      - uses: actions/checkout@v7
+      - uses: codespell-project/actions-codespell@master
+        with:
+          skip: "_impl.c"
