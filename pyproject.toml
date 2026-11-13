@@ -33,3 +33,6 @@ environment-pass = ["USE_LIMITED_API"]
 
 [tool.ruff]
 exclude = ["docs"]
+
+[tool.ruff.lint]
+ignore = ["EXE001"]

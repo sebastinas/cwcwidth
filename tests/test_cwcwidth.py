@@ -21,7 +21,8 @@
 import locale
 import sys
 import unittest
-from cwcwidth import wcwidth, wcswidth
+
+from cwcwidth import wcswidth, wcwidth
 
 supports_utf8 = "UTF-8" in locale.getlocale()
 is_mac = sys.platform == "darwin"
@@ -48,7 +49,7 @@ class Tests(unittest.TestCase):
 
     def test_empty_string(self):
         """Width of an empty string is 0."""
-        self._exec_test("", tuple())
+        self._exec_test("", ())
 
     def test_hello_world(self):
         """Width of English phrase: Hello World!"""

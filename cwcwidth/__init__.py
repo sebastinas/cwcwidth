@@ -29,10 +29,10 @@ the module.
 This module provides the same interface as the wcwidth module.
 """
 
-from ._impl import wcwidth, wcswidth
+from ._impl import wcswidth, wcwidth
 
 __version__ = "0.1.12"
 __author__ = "Sebastian Ramacher"
 __license__ = "Expat"
 __copyright__ = f"(C) 2021-2025 {__author__}"
-__all__ = ("wcwidth", "wcswidth")
+__all__ = ("wcswidth", "wcwidth")
