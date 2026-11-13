@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.13
+
+* Build wheels with limited API on platforms where possible. Limited API support with freethreading still needs some work in [cython](https://github.com/cython/cython/issues/7399).
+* Clean up build system and require `setuptools >= 77.0.3` for building.
+
 ## 0.1.12
 
 * Drop support for Python 3.10.

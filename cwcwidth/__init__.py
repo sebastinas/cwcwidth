@@ -32,8 +32,8 @@ module.
 
 from ._impl import wcswidth, wcwidth
 
-__version__ = "0.1.12"
+__version__ = "0.1.13"
 __author__ = "Sebastian Ramacher"
 __license__ = "Expat"
-__copyright__ = f"(C) 2021-2025 {__author__}"
+__copyright__ = f"(C) 2021-2026 {__author__}"
 __all__ = ("wcswidth", "wcwidth")
