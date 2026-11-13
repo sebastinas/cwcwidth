@@ -26,7 +26,8 @@ module calls wcwidth(3) and wcswidth(3) provided by C library. On systems where
 these functions are not available, a compatible implementation is included in
 the module.
 
-This module provides the same interface as the wcwidth module.
+For these two functions, this module provides the same interface as the wcwidth
+module.
 """
 
 from ._impl import wcswidth, wcwidth
