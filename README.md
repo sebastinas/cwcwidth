@@ -57,7 +57,7 @@ for CJK,
 
 `wcwidth` ships a compiled extension for the stable ABI (`cp310-abi3`) with
 [libwcwidth](https://wcwidth.readthedocs.io/en/latest/libwcwidth.html), and provides *grapheme
-support*, required for complex languages and emojis, while `uwcwidth` is without grapheme support,
+support*, required for complex languages and emojis, while `cwcwidth` is without grapheme support,
 calculating the sum of single-codepoint inspections as zero, narrow, or wide, and so `uwcwidth` is
 unable to measure emojis, flags, or complex languages.
 
