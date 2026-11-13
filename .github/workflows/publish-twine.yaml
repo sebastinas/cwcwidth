@@ -62,6 +62,7 @@ jobs:
 
   publish:
     name: Publish to PyPI
+    if: github.event_name == 'release' && github.event.action == 'published'
     needs: [build_wheels, build_sdist]
     runs-on: ubuntu-latest
     environment: pypi
