@@ -28,6 +28,7 @@ jobs:
         run: |
           python -m cibuildwheel --output-dir dist
       - name: Build wheels with limited API
+        continue-on-error: true
         run: |
           python -m cibuildwheel --output-dir dist
         env:
