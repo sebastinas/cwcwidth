@@ -18,6 +18,5 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-
 def wcwidth(wc: str) -> int: ...
 def wcswidth(pwcs: str, n: int | None = None) -> int: ...
